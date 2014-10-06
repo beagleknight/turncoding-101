@@ -43,11 +43,11 @@ var GAME = {};
         h: 50,
         sizeFactor: 1,
         
-        update: function(dt) {
+        update: function() {
             if(exports.keyPressed[38]) {
                 this.sizeFactor = 2;
             } else if(exports.keyPressed[40]) {
-                this.sizeFactor = .5;
+                this.sizeFactor = 0.5;
             } else {
                 this.sizeFactor = 1;
             }
