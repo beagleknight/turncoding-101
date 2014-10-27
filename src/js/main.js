@@ -1,9 +1,9 @@
 var GAME = {};
 
 (function (exports) {
-    var canvas = document.getElementById('game'),
-        ctx    = canvas.getContext("2d"),
-        before = +new Date();
+    var canvas   = document.getElementById('game'),
+        ctx      = canvas.getContext("2d"),
+        before   = +new Date();
 
     function update (dt) {
         window.console.log("Time passed (ms): " + dt);
@@ -34,8 +34,6 @@ var GAME = {};
         loop();
     };
     
-    exports.keyPressed = {};
-    
     exports.player = {
         x: 100,
         y: 100,
@@ -44,9 +42,11 @@ var GAME = {};
         sizeFactor: 1,
         
         update: function() {
-            if(exports.keyPressed[38]) {
+            var keyboard = exports.keyboard;
+
+            if(keyboard.isPressed(38)) {
                 this.sizeFactor = 2;
-            } else if(exports.keyPressed[40]) {
+            } else if(keyboard.isPressed(40)) {
                 this.sizeFactor = 0.5;
             } else {
                 this.sizeFactor = 1;
@@ -57,12 +57,4 @@ var GAME = {};
             context.fillRect(this.x, this.y, this.w*this.sizeFactor, this.h*this.sizeFactor);
         }
     };
-    
-    document.addEventListener("keydown", function(e) {
-        exports.keyPressed[e.which] = true;
-    });
-	
-    document.addEventListener("keyup", function(e) {
-        exports.keyPressed[e.which] = false;
-    });
 }(GAME));
