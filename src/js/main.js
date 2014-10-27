@@ -33,6 +33,7 @@ var GAME = {};
         loop();
     };
     
+    // TODO: refactor this code on its own module
     exports.player = {
         x: 100,
         y: 100,
