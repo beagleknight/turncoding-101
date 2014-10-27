@@ -6,7 +6,6 @@ var GAME = {};
         before   = +new Date();
 
     function update (dt) {
-        window.console.log("Time passed (ms): " + dt);
         exports.player.update(dt);
     }
 
@@ -24,7 +23,7 @@ var GAME = {};
         
         before = now;
 
-        update(dt);
+        update(dt / 1000); // Elapsed time in seconds
         render();
 
         exports.requestAnimationFrame(loop);
@@ -37,19 +36,31 @@ var GAME = {};
     exports.player = {
         x: 100,
         y: 100,
+        vx: 0,
+        vy: 0,
         w: 50,
         h: 50,
+        maxSpeed: 100,
         sizeFactor: 1,
         
-        update: function() {
+        update: function(dt) {
             var keyboard = exports.keyboard;
 
-            if(keyboard.isPressed(38)) {
+            this.x += this.vx * dt;
+            this.y += this.vy * dt;
+
+            this.sizeFactor = 1;
+            if(keyboard.isPressed("UP_ARROW")) {
                 this.sizeFactor = 2;
-            } else if(keyboard.isPressed(40)) {
+            } else if(keyboard.isPressed("DOWN_ARROW")) {
                 this.sizeFactor = 0.5;
-            } else {
-                this.sizeFactor = 1;
+            }
+
+            this.vx = 0;
+            if(keyboard.isPressed("LEFT_ARROW")) {
+                this.vx = -this.maxSpeed;
+            } else if(keyboard.isPressed("RIGHT_ARROW")) {
+                this.vx = this.maxSpeed;
             }
         },
         
