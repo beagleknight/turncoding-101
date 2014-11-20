@@ -2,8 +2,8 @@ var gulp         = require('gulp'),
     jshint       = require('gulp-jshint'),
     concat       = require('gulp-concat'),
     connect      = require('gulp-connect'),
-    SCRIPT_FILES = ['./src/js/main.js', './src/js/**/*.js'],
-    STYLE_FILES  = ['./src/css/reset.css', './src/css/main.css', './src/css/**/*.css'];
+    SCRIPT_FILES = ['src/js/main.js', 'src/js/**/*.js'],
+    STYLE_FILES  = ['src/css/reset.css', 'src/css/main.css', 'src/css/**/*.css'];
 
 gulp.task('scripts', function() {
     return gulp.src(SCRIPT_FILES)

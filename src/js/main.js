@@ -30,6 +30,16 @@ var GAME = {};
     }
 
     exports.start = function () {
+        var audioManager = exports.audioManager,
+            toggleAudioButton = document.getElementById('toggle-audio-button');
+
+        audioManager.loadAudio("tutorial", "/assets/Tutorial Song.ogg", "audio/ogg");
+        audioManager.playBackgroundMusic("tutorial");
+
+        toggleAudioButton.addEventListener("click", function () {
+            audioManager.toggleBackgroundMusic("tutorial");
+        });
+
         loop();
     };
     
