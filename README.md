@@ -5,7 +5,7 @@ Experimental game development turn-based between @ReikVal and @beagleknight.
 
 How to build the project
 ------------------------
-
+* `Install node
 * `npm install -g gulp`
 * `npm rebuild`
 * `gulp                # Start server listening on port 8080 (http://localhost:8080)`
